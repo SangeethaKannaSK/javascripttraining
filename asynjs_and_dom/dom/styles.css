@@ -1,0 +1,13 @@
+body { 
+    background: darksalamon;
+}
+
+.fill2 {
+    background-image: url('../images/Sangeetha.png');
+    position: relative;
+    height: 150px;
+    width: 150px;
+    top: 5px;
+    left: 5px;
+
+}

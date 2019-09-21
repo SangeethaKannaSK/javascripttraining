@@ -47,6 +47,21 @@ body {
     font-size: 1.5rem;
 }
 
+.cart {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    background: var(--mainWhite);
+    z-index: 3;
+    background: rgb(231,225,221);
+    padding: 1.5rem;
+    transition: var(--mainTransition);
+    visibility: hidden; 
+}
+
 .cart-btn {
     position: relative;
     cursor: pointer;
@@ -60,6 +75,10 @@ body {
      padding: 0 5px;
      border-radius: 30%;
      color: var(--mainWhite);
+}
+
+.transparentBcg {
+    visibility: visible;
 }
 
 /** Completed Navbar **/

@@ -180,10 +180,8 @@ class UI {
                     Storage.saveCart(cart)
                     this.setCartValues(cart)
                     event.target.previousElementSibling.innerText = tempItem.amount;
-                }               
-
+                } 
             }
-
         });
     }
 

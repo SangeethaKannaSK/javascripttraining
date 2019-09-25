@@ -1,6 +1,20 @@
 #Java Script Training Plan
 
 1. Javascript and web fundamentals
+programming javascript applications 
+
+dstct
+
+amts
+
+Security 
+
+content-security-policy.com
+
+content-security-policy - response header  reduce CSS risks on modern browsers
+
+Nodes Vs Elements
+
 
 2. Algorithmic Challenges
 
@@ -48,4 +62,4 @@ How ?
   React
   
 11. Learn testing, Learn a different programming language - Scheme
->>>>>>> 28cf3ee557056afbcbcfb9acef57748884f69d09
+

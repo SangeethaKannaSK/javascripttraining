@@ -1,40 +1,36 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import './assets/styles.css';
-import quizService from './quizService'
-import QuestionBox from './components/QuestionBox'
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+import './assets/styles.css'
+import QuizService from './quizService'
+import QuestionPage from './components/QuestionPage'
+//import MasonryLayout from './components/MansonaryLayout'
 
 class Quiz extends Component {
+    constructor() {
+        super()
+        this.quizService = new QuizService()
+        this.updateScore = this.updateScore.bind(this)
+    }
+
     state = {
         questions: [],
         score: 0,
-        responses: 0
+        responses: 0,
+        currentQuestionNumber: 0        
     }
 
     getQuestions = () => {
-        quizService().then(question => {
-            this.setState( {
-                questions: question
-            })
-        })
+        this.quizService.retrieveQuestions().then(_questions => {
+            this.setState( { questions: _questions })
+          }
+      );
     }
 
     playAgain = () => {
         this.getQuestions()
         this.setState( {
             score: 0,
-            responses: 0
-        })
-    }
-
-    computeAnswer = (answer, correctAnswer) => {
-        if(answer === correctAnswer) {
-            this.setState( {
-                score: this.state.score + 1
-            })
-        }
-        this.setState({
-            responses: this.state.responses < 5? this.state.responses + 1:5
+            responses: 0            
         })
     }
 
@@ -42,30 +38,47 @@ class Quiz extends Component {
         this.getQuestions()
     }
 
+    updateScore(answer) {
+        // TODO: Dynamically get answers and hints and explanation
+        // this.quizService.updateScore(answer, question).then(result => {
+        //     console.log(result)
+        // })      
+        this.setState({
+            score: (answer[0] === this.state.questions[this.state.currentQuestionNumber].answer) ? this.state.score + 1 : this.state.score,
+            currentQuestionNumber: this.state.currentQuestionNumber + 1,            
+            responses:this.state.responses + 1 
+        })        
+    }
+
     render() {
         return (
-            <div className="container">
-                <div className="title">
-                    {this.state.questions.length > 0 &&
-                    this.state.responses < 5 &&
-                    this.state.questions.map(
-                        ({question, answers, correct, questionId}) => (
-                            <QuestionBox 
-                            question={question} 
-                            options={answers} 
-                            key={questionId} 
-                            selected={answer => this.computeAnswer(answer, correct)}
-                            />
-                        )
-                    )}
 
-                    {this.state.responses === 5 ? (
-                        <Result score = {this.state.score} playAgain={this.playAgain} />
-                    )}
-                </div>                
+            <div className="container">               
+                {
+                    this.state.questions.length > 0 ? 
+                    <QuestionPage question={this.state.questions[this.state.currentQuestionNumber]} updateScore={this.updateScore} /> : <h1>Loading Questions...</h1>
+                }
+                {
+                    /* 
+                question={this.currentQuestionNumber} handleClick={this.displayNextQuestion} 
+                <MasonryLayout columns={2} gap={25}>
+                    {
+                    [...Array(1).keys()].map(key => {
+                        const height = 200 + Math.ceil(Math.random() * 300);
+
+                        return (
+                        <div style={{height: `${height}px`}} >Hi</div>
+                        )
+                    })
+                    }
+                </MasonryLayout> */
+                }
+
+                <h1>{this.state.score   }</h1>
+                <div>{this.state.responses}<span>/</span>{this.state.questions.length}</div>
             </div>
-        );
+        )
     }
 }
 
-ReactDOM.render(<Quiz/>, document.getElementById("root") )
+ReactDOM.render(<Quiz/>, document.getElementById("root") )  

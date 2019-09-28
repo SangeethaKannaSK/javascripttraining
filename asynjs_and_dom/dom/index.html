@@ -5,18 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Drag and Drop</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/popup.css">
+    <link rel="stylesheet" href="styles/splitscreen.css">
+
+    <link rel="stylesheet" href="../../thirdparty/font-awesome.min.css">
 </head>
 <body>
 
-    <div class="empty">
-        <div class="fill" draggable="true"></div>
-    </div>
-    <div class="empty"></div>
-    <div class="empty"></div>
-    <div class="empty"></div>
-    <div class="empty"></div>
-    <script src="draganddrop.js"></script>
-    
+    <section>
+        <div id="chain" class="fa">
+        </div>
+        
+    </section>    
+
+    <section class="tab">
+        <div class="empty">
+            <div class="fill" draggable="true"></div>
+        </div>
+        <div class="empty"></div>
+        <div class="empty"></div>
+        <div class="empty"></div>
+        <div class="empty"></div>
+    </section>    
+
+    <section class="tab">
+        <div class="screen-split-widget">
+            <div class="layer">
+                <div class="content-wrap">
+                    <div class="content-body">
+                        My First focus for today
+                    </div>
+                    <img src="images/background1.jpg" alt="">
+                </div>
+            </div>
+            <div class="layer">
+                <div class="content-wrap">
+                    <div class="content-body">
+                        My Second focus for today
+                    </div>
+                    <img src="img1.png" alt="">
+                </div>
+            </div>
+        </div>    
+    </section>
+
+    <section class="tab">
+        <a href="#/" class="btn">Show Box</a>
+
+        <div class="status-popup">
+            <header>Java script Popup
+                <a class="close"></a>
+            </div>
+            <div class="content"> 
+                <h1>Completed Successfully</h1>
+            </div>
+        </div>    
+    </section>
+
+    <script src="js/tabs.js"></script>
+    <script src="js/popup.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/draganddrop.js"></script>    
 </body>
 </html>

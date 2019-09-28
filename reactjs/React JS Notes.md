@@ -53,9 +53,7 @@ State should be always located near the parent
 
 Babel compiler --> bleeding edge javascript features
 
-
 npm run build - production buid
-
 
 npm install gh-pages --save-dev
 
@@ -68,4 +66,22 @@ add two new scripts
 predeploy: npm run build
 deploy: gh-pages -d build
 
-Vtal dm
+Virtual DOM
+
+Error Boundaries
+
+Where we can use React
+
+Hooks - useEffect ( need a hook with same signature, but synchronously after all mutations) useImperativeHandle useSynchronousEffect useLayoutEffect
+
+PropTypes - isRequired
+
+React lifecycle
+ComponentDidUpdate - setState
+
+Browserify envify uglify 
+
+getDerivedStateFromProps - componentDidUpdate 
+
+Correct way of detecting whether use has pressed Enter key
+

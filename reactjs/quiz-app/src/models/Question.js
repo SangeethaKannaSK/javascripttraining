@@ -10,40 +10,55 @@
  * 
  */
 
-const QuestionType = {
-    basic: 0,
-    assertionreasoning: 1,
-    match: 2,
-    statements: 3,
-    images: 4
-}
+import QuestionType from "./QuestionType"
 
 class Question { 
-    constructor( questionStatement, correctAnswer, options = [], questionType = QuestionType.basic,  id ){
-        this.questionStatement = questionStatement;        
-        this.correctAnswer = correctAnswer
-        this.questionType = questionType
-        this.answered = false
+
+    constructor( questionData, answer, options = [], questionType = QuestionType.basic, id = 0) {
         
-        if(questionType === QuestionType.assertionreasoning) {
+        this.answer = answer
+        this.questionType = QuestionType[questionType]                
+        this.answered = false
+
+        if(this.questionType === "assertion") {            
+            this.assertion = questionData.assertion         
+            this.reason = questionData.reason            
             this.options = [
                 'Both R and A are true and R is the correct explanation of A',
                 'Both R and A are true and R is not the correct explanation of A',
                 'Both R and A are false',
                 'A is true and R is false'
             ]
-        } else if(questionType === QuestionType.assertionreasoning) {
-            this.options = ['1 2 3 4', '1 2 4 3', '1 3 2 4']
+        } else if(this.questionType === "match") {
+            this.options = this.getMatchingCombinations()
+            this.options.push(this.answer)
 
+            this.matchLeft = questionData.matchLeft
+            this.matchRight = questionData.matchRight
+
+        } else if(this.questionType === "statement") {
+            this.options = this.getStatementProblems()
+            this.options.push(this.answer)
+            this.statements = questionData.statements
+             
         } else {            
-            this.options = options;
+            this.options = options
+            this.options.push(this.answer)
+            this.questionStatement = questionData.questionStatement
         }
-
-        this.options.push(this.correctAnswer)
-        this.id = id;
+        
+        this.id = id        
+        console.log(this.options)
     }
 
+    getMatchingCombinations() {
+        return ['1 2 3 4', '1 2 4 3', '1 3 2 4']
+    }
     
+    getStatementProblems() {
+        return ['All statements are false','All statements are true', 'I II and III are true']
+    }
+
 }
 
 export default Question

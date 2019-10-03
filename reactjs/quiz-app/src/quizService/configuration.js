@@ -1,5 +1,5 @@
 class Configuration {
-    QUESTIONS_URL = "http://localhost:8080/collectionItems";
+    QUESTION_COLLECTION_URL = "http://localhost:8080/collectionItems";
 }
 
 

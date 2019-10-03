@@ -4,18 +4,18 @@ const AnswerBox = (props) => {
 
     //Adding answer to present options 
 
-    //TODO: Randomly push 
-    props.question.options.push(props.question.answer);
+    //TODO: Randomly push - To Be Removed
+    // props.question.options.push(props.question.answer);
     
     return (
 
-        <div className="answerBox">
+        <div className="answerBox">            
             {   
                 props.question.options.map((text, index) => (
                     <button className="answerBtn"
                     key={index}
                     onClick= {
-                        () => { props.updateScore( [text ] ) }
+                        () => { props.updateScore( [text] ) }
                     }
                     >{text}</button>
                 ))

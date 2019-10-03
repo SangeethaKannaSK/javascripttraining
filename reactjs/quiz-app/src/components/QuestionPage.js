@@ -9,11 +9,12 @@ class QuestionPage extends Component {
     render() {
         
         const {updateScore} = this.props
+        const {markForReview} = this.props
 
         return (
             <div className='title' >
-                <QuestionBox question={this.props.question}  />
-                <AnswerBox question={this.props.question} updateScore={updateScore}  />
+                <QuestionBox question={this.props.question} markForReview={markForReview} />
+                <AnswerBox question={this.props.question} updateScore={updateScore} />
             </div>
         )
     }

@@ -5,7 +5,7 @@
   "dependencies": {
     "@babel/runtime": "^7.6.2",
     "react": "^16.9.0",
-    "react-dev-utils": "^9.0.4",
+    "react-dev-utils": "^11.0.4",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.2",
     "react-split-pane": "^0.1.87"
